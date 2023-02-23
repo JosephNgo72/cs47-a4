@@ -11,7 +11,6 @@ const SongList = ({ tracks }) => {
     index += 1;
     return (
       <SongItem
-        index={index}
         image={item.imageUrl}
         songTitle={item.songTitle}
         artist={item.songArtists[0]["name"]}

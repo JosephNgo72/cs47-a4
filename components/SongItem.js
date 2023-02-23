@@ -1,17 +1,13 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import millisToMinutesAndSeconds from "../utils/millisToMinutesAndSeconds";
+import { Ionicons } from "@expo/vector-icons";
 
-const SongItem = ({
-  index,
-  image,
-  songTitle,
-  artist,
-  songAlbum,
-  songDuration,
-}) => {
+const SongItem = ({ image, songTitle, artist, songAlbum, songDuration }) => {
   return (
     <View style={styles.item}>
-      <Text style={styles.index}>{index}</Text>
+      <Pressable>
+        <Ionicons name="play-circle-outline" size={32} color="green" />
+      </Pressable>
       <Image source={{ uri: image }} style={styles.image} />
       <View style="song">
         <Text numberOfLines={1} style={styles.songTitle}>
