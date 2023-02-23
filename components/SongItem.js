@@ -27,16 +27,20 @@ const SongItem = ({
               URL: previewUrl,
             })
           }
+          style={styles.icon}
         >
-          <Ionicons name="play-circle-outline" size={32} color="green" />
+          <Ionicons name="play-circle-outline" size={48} color="green" />
         </Pressable>
+
         <Image source={{ uri: image }} style={styles.image} />
-        <View style="song">
+
+        <View style={styles.song}>
           <Text numberOfLines={1} style={styles.songTitle}>
             {songTitle}
           </Text>
           <Text style={styles.artist}>{artist}</Text>
         </View>
+
         <Text numberOfLines={1} style={styles.songAlbum}>
           {songAlbum}
         </Text>
@@ -53,23 +57,26 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     alignItems: "center",
-    padding: 16,
+    paddingVertical: 5,
     marginVertical: 8,
     width: "100%",
   },
-  index: { width: "10%", color: "white" },
+  icon: {
+    width: "15%",
+    alignItems: "center",
+  },
   image: {
-    width: "20%",
+    width: "15%",
     height: 80,
-    margin: 5,
     resizeMode: "contain",
   },
-  songTitle: { width: 160, color: "white" },
+  songTitle: { color: "white" },
   artist: { color: "white" },
   song: {
-    width: "45%",
+    width: "35%",
+    padding: 5,
   },
-  songAlbum: { width: "15%", color: "white" },
+  songAlbum: { width: "25%", color: "white", padding: 5 },
   duration: { width: "10%", color: "white" },
 });
 
