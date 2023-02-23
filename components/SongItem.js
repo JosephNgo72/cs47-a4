@@ -2,26 +2,49 @@ import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import millisToMinutesAndSeconds from "../utils/millisToMinutesAndSeconds";
 import { Ionicons } from "@expo/vector-icons";
 
-const SongItem = ({ image, songTitle, artist, songAlbum, songDuration }) => {
+const SongItem = ({
+  navigation,
+  externalUrl,
+  previewUrl,
+  image,
+  songTitle,
+  artist,
+  songAlbum,
+  songDuration,
+}) => {
   return (
-    <View style={styles.item}>
-      <Pressable>
-        <Ionicons name="play-circle-outline" size={32} color="green" />
-      </Pressable>
-      <Image source={{ uri: image }} style={styles.image} />
-      <View style="song">
-        <Text numberOfLines={1} style={styles.songTitle}>
-          {songTitle}
+    <Pressable
+      onPress={() =>
+        navigation.navigate("DetailsPage", {
+          URL: externalUrl,
+        })
+      }
+    >
+      <View style={styles.item}>
+        <Pressable
+          onPress={() =>
+            navigation.navigate("DetailsPage", {
+              URL: previewUrl,
+            })
+          }
+        >
+          <Ionicons name="play-circle-outline" size={32} color="green" />
+        </Pressable>
+        <Image source={{ uri: image }} style={styles.image} />
+        <View style="song">
+          <Text numberOfLines={1} style={styles.songTitle}>
+            {songTitle}
+          </Text>
+          <Text style={styles.artist}>{artist}</Text>
+        </View>
+        <Text numberOfLines={1} style={styles.songAlbum}>
+          {songAlbum}
         </Text>
-        <Text style={styles.artist}>{artist}</Text>
+        <Text style={styles.duration}>
+          {millisToMinutesAndSeconds(songDuration)}
+        </Text>
       </View>
-      <Text numberOfLines={1} style={styles.songAlbum}>
-        {songAlbum}
-      </Text>
-      <Text style={styles.duration}>
-        {millisToMinutesAndSeconds(songDuration)}
-      </Text>
-    </View>
+    </Pressable>
   );
 };
 
